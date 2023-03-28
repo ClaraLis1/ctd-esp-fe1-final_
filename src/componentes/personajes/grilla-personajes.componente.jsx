@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { getCharacters } from '../../slices/getCharactersSlice';
 import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
 
@@ -11,10 +14,25 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
  */
 const GrillaPersonajes = () => {
 
+    const dispatch = useAppDispatch()
+    const characters = useAppSelector(state => state.charactersGallery)
+    
+    
+
+    useEffect(() => {
+        dispatch(getCharacters("https://rickandmortyapi.com/api/character"))        
+    },[])
+    
+    
+
     return <div className="grilla-personajes">
-       <TarjetaPersonaje />
-       <TarjetaPersonaje />
-       <TarjetaPersonaje />
+       {characters.data.results?.map(item =>{
+            return <TarjetaPersonaje 
+                image = {item.image}
+                name = {item.name}
+             />
+            })
+        }       
     </div>
 }
  
