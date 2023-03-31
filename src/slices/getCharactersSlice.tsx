@@ -11,6 +11,7 @@ export const getCharacters = createAsyncThunk(
     }
 )
 
+
 const initialState: initialType = {
     searchValue: "",
     data:{
@@ -61,18 +62,13 @@ const charactersGallery = createSlice({
         createSearch(state, action : PayloadAction<string>){
             state.searchValue = action.payload
         },
-        addFavorites(state, action){     
-            console.log(action.payload.favorite);
-                  
+        addFavorites(state, action){               
             if(action.payload.favorite === true) {state.favorites.push(action.payload)}
             else if(action.payload.favorite === false){
                 state.favorites = state.favorites.filter(item => item.id !=action.payload.id)
             }         
-            
         },
-        resetFavorites(state){
-            console.log("click");
-            
+        resetFavorites(state){ 
             state.favorites= [];
         }   
     },
@@ -99,8 +95,6 @@ const charactersGallery = createSlice({
 
     }
 })
-
-
 export const { createSearch } = charactersGallery.actions
 export const { addFavorites } = charactersGallery.actions
 export const { resetFavorites } = charactersGallery.actions

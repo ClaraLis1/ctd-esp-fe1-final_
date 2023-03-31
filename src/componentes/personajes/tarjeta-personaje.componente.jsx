@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { addFavorites } from '../../slices/getCharactersSlice';
-
 import BotonFavorito from '../botones/boton-favorito.componente';
 import './tarjeta-personaje.css';
 

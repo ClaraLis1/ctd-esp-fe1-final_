@@ -1,4 +1,4 @@
-export interface Results {    
+export interface Character {    
     id: number
     name:string
     status: string
@@ -31,7 +31,7 @@ export interface Info {
 
 export interface Data{
     info:Info
-    results: Results[]
+    results: Character[]
 }
 
 export interface initialType {    
@@ -41,5 +41,5 @@ export interface initialType {
     next: string | null
     previous:string | null
     error:boolean
-    favorites: Results[]
+    favorites: Character[]
 }   

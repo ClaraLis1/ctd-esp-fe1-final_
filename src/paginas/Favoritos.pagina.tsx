@@ -16,7 +16,7 @@ const PaginaFavoritos = () => {
 
    
     const handleClick = ()=>{
-        dispatch(resetFavorites("reset"))
+        dispatch(resetFavorites())
     }
 
     return <div className="container">
@@ -25,7 +25,7 @@ const PaginaFavoritos = () => {
             <button className="danger" onClick={handleClick}>Limpiar favoritos</button>
         </div>
         <GrillaPersonajes 
-        favorites = {favorites} />
+            favorites={favorites} characters={undefined} />
     </div>
 }
 

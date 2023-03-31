@@ -6,6 +6,7 @@ import { createSearch, getCharacters } from '../slices/getCharactersSlice';
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
+
  
 /**
  * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
@@ -18,15 +19,13 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 const PaginaInicio = () => {
        
     const dispatch = useAppDispatch()
-    const characters = useAppSelector(state => state.charactersGallery) 
-    
+    const characters  = useAppSelector(state => state.charactersGallery)  
 
       
     const handleClick = ()=>{
         console.log('click');
         dispatch(createSearch(""))        
         dispatch(getCharacters(`https://rickandmortyapi.com/api/character/`))
-
     }
 
     useEffect(() => {  
@@ -43,8 +42,7 @@ const PaginaInicio = () => {
         <Filtros />
         <Paginacion />
         <GrillaPersonajes 
-            characters = {characters}
-        />
+            characters={characters} favorites={[]}        />
         <Paginacion />
     </div>
 }
