@@ -4,3 +4,7 @@
   grid-gap: 20px;
   justify-items: center;
 }
+
+.sinResultados{
+  grid-column: 1/4;
+}

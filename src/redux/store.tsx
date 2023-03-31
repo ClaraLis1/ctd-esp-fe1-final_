@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import characters from '../slices/getCharactersSlice'
 
-import inputSlice from '../slices/inputSlice'
 
 
 export const store = configureStore({
-  reducer: {
-    searchCharacter:inputSlice,
-    charactersGallery : characters
+  reducer: {  
+    charactersGallery : characters    
   },
 })
 

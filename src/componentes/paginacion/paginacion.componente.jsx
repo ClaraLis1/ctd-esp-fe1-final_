@@ -1,6 +1,4 @@
-import { useSelector } from 'react-redux';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { store } from '../../redux/store';
 import './paginacion.css';
 import { getCharacters } from '../../slices/getCharactersSlice';
 
@@ -15,7 +13,7 @@ import { getCharacters } from '../../slices/getCharactersSlice';
 const Paginacion = () => {
     const dispatch = useAppDispatch()
     const nextPage = useAppSelector(state => state.charactersGallery.next)
-    const previousPage = useAppSelector(state => state.charactersGallery.previous)
+    const previousPage = useAppSelector(state => state.charactersGallery.previous) 
   
    
     const handleClickNext = ()=>{

@@ -9,9 +9,21 @@
   font-weight: 500;
 }
 
+.inputsFiltro{
+  display: flex;
+  flex-direction: row;
+}
+
 .filtros input[type="text"]{
+  width: 75%;
   flex-grow: 1;
   padding: 15px 20px; 
   border-radius: 3px;
   border: 1px solid #d0d0d0;
+}
+
+button.primary {
+  width: 20%;
+  margin-left: 5px;
+  
 }

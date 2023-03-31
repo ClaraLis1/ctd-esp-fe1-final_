@@ -1,48 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-
-interface Character {
-    id: number
-    name:string
-    status: string
-    species: string
-    type: string
-    gender:string,
-    origin: {
-        name: string
-        url: string
-    },
-    location: {
-    name: string
-    url:string
-    },
-    image:string
-    episode: [
-        string
-    ]
-    url: string
-    created: string
-}
-
-interface Info {
-    count: number
-    pages: number
-    next: string
-    prev: string
-}
-
-interface Data{
-    info:Info
-    characters: Character[]
-}
-
-interface initialType {
-    data:Data
-    loading: boolean
-    next: string | null
-    previous:string | null
-}   
-
-
+import {initialType} from "../types/character.types";
+import type { PayloadAction } from '@reduxjs/toolkit'
 
 export const getCharacters = createAsyncThunk(
     'characters/info',
@@ -54,6 +12,7 @@ export const getCharacters = createAsyncThunk(
 )
 
 const initialState: initialType = {
+    searchValue: "",
     data:{
         info:{
             count: 0,
@@ -61,30 +20,78 @@ const initialState: initialType = {
             next: "",
             prev: ""
         },
-        characters: []
+        results: 
+        [{
+            id: 0,
+            name:"",
+            status: "",
+            species: "",
+            type: "",
+            gender:"",
+            origin: {
+                name: "",
+                url: ""
+            },
+            location: {
+            name: "",
+            url:"",
+            },
+            image:"",
+            episode: [
+                ""
+            ],
+            url: "",
+            created: "" ,     
+            favorite:false,   
+            },
+        ],
     },
     loading: false,
     next:"",
-    previous:""
+    previous:"",
+    error:false,
+    favorites:[]
+    
 }
 
 const charactersGallery = createSlice({
     name: 'gallery',
     initialState,
     reducers: {
-
+        createSearch(state, action : PayloadAction<string>){
+            state.searchValue = action.payload
+        },
+        addFavorites(state, action){     
+            console.log(action.payload.favorite);
+                  
+            if(action.payload.favorite === true) {state.favorites.push(action.payload)}
+            else if(action.payload.favorite === false){
+                state.favorites = state.favorites.filter(item => item.id !=action.payload.id)
+            }         
+            
+        },
+        resetFavorites(state){
+            console.log("click");
+            
+            state.favorites= [];
+        }   
     },
     extraReducers: (builder) => {
         builder
             .addCase(getCharacters.pending, (state) => {
                 state.loading = true
             })
-            .addCase(getCharacters.fulfilled, (state, action) => {               
-                state.loading = false
-                state.data = action.payload
-                state.next = action.payload.info.next
-                state.previous = action.payload.info.prev
-             
+            .addCase(getCharacters.fulfilled, (state, action) => {   
+                if(action.payload.error){
+                    state.error = true
+                }                      
+                else{
+                    state.loading = false
+                    state.data = action.payload
+                    state.next = action.payload.info.next
+                    state.previous = action.payload.info.prev
+                    state.error = false
+                }  
             })
             .addCase(getCharacters.rejected, (state, action) => {
                 state.loading = false
@@ -94,5 +101,7 @@ const charactersGallery = createSlice({
 })
 
 
-
+export const { createSearch } = charactersGallery.actions
+export const { addFavorites } = charactersGallery.actions
+export const { resetFavorites } = charactersGallery.actions
 export default charactersGallery.reducer
