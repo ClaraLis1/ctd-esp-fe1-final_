@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import './tarjeta-episodio.css';
 
 /**
@@ -8,13 +9,29 @@ import './tarjeta-episodio.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaEpisodio = () => {
+const TarjetaEpisodio = (props) => {
+    const [episodes, setEpisodes] = useState({})
+
+    let episodeNumber = props.episode.slice(40)
+
+    useEffect(() => {  
+        fetch(`https://rickandmortyapi.com/api/episode/${episodeNumber}`)
+                .then(response => response.json())
+                .then(data => {      
+                const respuesta = data;
+                setEpisodes(respuesta)
+            })
+            .catch(error => console.error(error));
+      
+    },[]) 
+
+    console.log(episodes);
 
     return <div className="tarjeta-episodio">
-            <h4>Close Rick-counters of the Rick Kind</h4>
+            <h4>{episodes?.name}</h4>
             <div>
-                <span>S01E01</span>
-                <span>Lanzado el: April 7, 2014</span>
+                <span>{episodes.episode}</span>
+                <span>Lanzado el: {episodes?.air_date}</span>
             </div>
     </div>
 }

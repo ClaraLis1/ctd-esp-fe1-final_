@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { addFavorites } from '../../slices/getCharactersSlice';
 import BotonFavorito from '../botones/boton-favorito.componente';
@@ -13,6 +14,7 @@ import './tarjeta-personaje.css';
  * @returns un JSX element 
  */
 const TarjetaPersonaje = (props) => {
+    
     const dispatch = useAppDispatch()
     const [fav, setFav] = useState(false)
     const handleClick = ()=>{  
@@ -31,7 +33,7 @@ const TarjetaPersonaje = (props) => {
     
     return(
      <div className="tarjeta-personaje">
-        <img src={props.item.image} alt={props.item.name}/>
+        {<Link to={`/detalle/${props.item.id}`}><img src={props.item.image} alt={props.item.name}/></Link>}
         <div className="tarjeta-personaje-body">
             <span>{props.item.name}</span>
             <BotonFavorito esFavorito={props.item.favorite} onClick={handleClick}/>

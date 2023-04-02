@@ -16,7 +16,7 @@ const Filtros = () => {
     }   
     
     return <div className="filtros">
-        <label for="nombre">Filtrar por nombre:</label>
+        <label htmlFor="nombre">Filtrar por nombre:</label>
         <div className='inputsFiltro'>
             <input 
                 type="text" 

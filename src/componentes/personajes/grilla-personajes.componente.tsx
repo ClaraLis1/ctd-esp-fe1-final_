@@ -32,21 +32,19 @@ const GrillaPersonajes = ({characters, favorites}:ListadoCharacters) => {
 
     return (
         <>
-         {characters && 
-    <div className="grilla-personajes">  
-        {(characters.error === true) ?
-         <h4 className='sinResultados'>No se encontraron resultados para su búsqueda</h4>
-        :newCharacters?.map(item =>{     
+        
+        <div className="grilla-personajes">  
+ 
+            { newCharacters?.map(item =>{     
             return <TarjetaPersonaje 
                 key={item.id}               
-                item = {item}
-                
+                item = {item}                
              />
             })
         }       
         
     </div>
-    }  
+    
     {favorites && 
     <div className="grilla-personajes">  
         {favorites.map(item =>{     

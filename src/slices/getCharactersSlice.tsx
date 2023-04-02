@@ -2,15 +2,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import {initialType} from "../types/character.types";
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-export const getCharacters = createAsyncThunk(
+export const getCharacters  = createAsyncThunk(
     'characters/info',
-    async (page: string) => {
-        const res = await fetch(page)
-        const parseRes = await res.json()
-        return parseRes
+    async (page: string | null) => {
+        if(page !== null){
+            const res = await fetch(page)
+            const parseRes = await res.json()
+            return parseRes
+        }
     }
 )
-
 
 const initialState: initialType = {
     searchValue: "",
@@ -77,7 +78,9 @@ const charactersGallery = createSlice({
             .addCase(getCharacters.pending, (state) => {
                 state.loading = true
             })
-            .addCase(getCharacters.fulfilled, (state, action) => {   
+            .addCase(getCharacters.fulfilled, (state, action) => {  
+                console.log(action.payload);
+                 
                 if(action.payload.error){
                     state.error = true
                 }                      
