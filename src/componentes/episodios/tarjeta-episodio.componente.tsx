@@ -9,9 +9,18 @@ import './tarjeta-episodio.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaEpisodio = (props) => {
-    const [episodes, setEpisodes] = useState({})
 
+
+const TarjetaEpisodio = (props: { episode: string }) => {
+    const [episodes, setEpisodes] = useState({
+        id: 0,
+        name: "",
+        air_date: "",
+        episode: "",
+        characters: [],
+        url: "",
+        created: ""
+      })
     let episodeNumber = props.episode.slice(40)
 
     useEffect(() => {  
@@ -25,15 +34,17 @@ const TarjetaEpisodio = (props) => {
       
     },[]) 
 
-    console.log(episodes);
+  
 
-    return <div className="tarjeta-episodio">
+    return (
+    <div className="tarjeta-episodio">
             <h4>{episodes?.name}</h4>
             <div>
                 <span>{episodes.episode}</span>
                 <span>Lanzado el: {episodes?.air_date}</span>
             </div>
     </div>
+    )
 }
 
 export default TarjetaEpisodio;

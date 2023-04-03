@@ -37,9 +37,8 @@ const GrillaPersonajes = ({characters, favorites}:ListadoCharacters) => {
  
             { newCharacters?.map(item =>{     
             return <TarjetaPersonaje 
-                key={item.id}               
-                item = {item}                
-             />
+                key={item.id}
+                item={item} characters={undefined} favorite={[]}             />
             })
         }       
         
@@ -49,9 +48,8 @@ const GrillaPersonajes = ({characters, favorites}:ListadoCharacters) => {
     <div className="grilla-personajes">  
         {favorites.map(item =>{     
         return <TarjetaPersonaje 
-            key={item.id}               
-            item = {item}
-            
+            key={item.id}
+            item={item} characters={undefined} favorite={[]}            
          />
         })
     }       

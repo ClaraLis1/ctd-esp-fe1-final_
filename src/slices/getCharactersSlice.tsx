@@ -79,7 +79,7 @@ const charactersGallery = createSlice({
                 state.loading = true
             })
             .addCase(getCharacters.fulfilled, (state, action) => {  
-                console.log(action.payload);
+                
                  
                 if(action.payload.error){
                     state.error = true

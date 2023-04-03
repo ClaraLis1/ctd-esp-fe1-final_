@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { addFavorites } from '../../slices/getCharactersSlice';
+import { Character, initialType } from '../../types/character.types';
 import BotonFavorito from '../botones/boton-favorito.componente';
 import './tarjeta-personaje.css';
 
@@ -13,7 +14,15 @@ import './tarjeta-personaje.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaPersonaje = (props) => {
+
+ interface ListadoCharacters {
+    [x: string]: any;
+    characters: initialType | undefined,
+    favorite : Character[]
+   
+}
+
+const TarjetaPersonaje = (props : ListadoCharacters) => {
     
     const dispatch = useAppDispatch()
     const [fav, setFav] = useState(false)
