@@ -39,8 +39,6 @@ const TarjetaPersonaje = (props : ListadoCharacters) => {
         }        
     }   
 
-       
-    
     return(
      <div className="tarjeta-personaje">
         {<Link to={`/detalle/${props.item.id}`}><img src={props.item.image} alt={props.item.name}/></Link>}

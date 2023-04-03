@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { addFavorites } from "../slices/getCharactersSlice";
-import { Character } from "../types/character.types";
-
 
 /**
  * Esta es la pagina de detalle. Aqui se puede mostrar la vista sobre el personaje seleccionado junto con la lista de episodios en los que aparece
@@ -20,9 +18,6 @@ import { Character } from "../types/character.types";
  * 
  * @returns la pagina de detalle
  */
-interface Detalle{
-    character: Character
-}
  
 const PaginaDetalle = () => {
     const {id}= useParams(); 
@@ -63,7 +58,7 @@ const PaginaDetalle = () => {
         })
             .catch(error => console.error(error));
             
-        },[])    
+        },[id])    
        
     useEffect(()=>{
         if(isFavorite){
@@ -107,8 +102,8 @@ const PaginaDetalle = () => {
             {detalle.episode?.map((episode, index) =>{
                 return(
                 <TarjetaEpisodio 
-                key = {index}
-                episode = {episode}/>
+                        key={index}
+                        episode={episode} id={0} name={""} air_date={""} characters={[]} url={""} created={""}/>
                 )
             })
             }

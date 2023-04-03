@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Character } from '../../types/character.types';
 import './tarjeta-episodio.css';
 
 /**
@@ -9,9 +10,18 @@ import './tarjeta-episodio.css';
  * 
  * @returns un JSX element 
  */
+ interface Episode {
+    id: number
+    name: string
+    air_date: string
+    episode: string
+    characters: Character[],
+    url: string,
+    created: string
+    
+}
 
-
-const TarjetaEpisodio = (props: { episode: string }) => {
+const TarjetaEpisodio = (props: Episode) => {
     const [episodes, setEpisodes] = useState({
         id: 0,
         name: "",

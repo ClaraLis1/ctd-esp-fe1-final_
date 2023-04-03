@@ -33,12 +33,12 @@ const GrillaPersonajes = ({characters, favorites}:ListadoCharacters) => {
     return (
         <>
         
-        <div className="grilla-personajes">  
- 
+        <div className="grilla-personajes">   
             { newCharacters?.map(item =>{     
             return <TarjetaPersonaje 
                 key={item.id}
-                item={item} characters={undefined} favorite={[]}             />
+                item={item} characters={undefined} favorite={[]}
+                />
             })
         }       
         
