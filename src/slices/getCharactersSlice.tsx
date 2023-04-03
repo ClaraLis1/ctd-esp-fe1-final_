@@ -66,7 +66,7 @@ const charactersGallery = createSlice({
         addFavorites(state, action){               
             if(action.payload.favorite === true) {state.favorites.push(action.payload)}
             else if(action.payload.favorite === false){
-                state.favorites = state.favorites.filter(item => item.id !=action.payload.id)
+                state.favorites = state.favorites.filter(item => item.id !==action.payload.id)
             }         
         },
         resetFavorites(state){ 
@@ -78,8 +78,7 @@ const charactersGallery = createSlice({
             .addCase(getCharacters.pending, (state) => {
                 state.loading = true
             })
-            .addCase(getCharacters.fulfilled, (state, action) => {  
-                
+            .addCase(getCharacters.fulfilled, (state, action) => {                  
                  
                 if(action.payload.error){
                     state.error = true

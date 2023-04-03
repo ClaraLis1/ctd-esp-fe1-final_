@@ -1,5 +1,5 @@
 import {  useAppSelector } from '../../redux/hooks';
-import { Character, Data, initialType} from '../../types/character.types';
+import { Character, initialType} from '../../types/character.types';
 import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
 

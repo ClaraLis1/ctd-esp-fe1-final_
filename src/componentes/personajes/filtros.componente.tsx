@@ -1,16 +1,14 @@
-import { useState } from 'react';
 import './filtros.css';
-import { useDispatch } from "react-redux"
 import { createSearch} from '../../slices/getCharactersSlice';
 import { getCharacters } from '../../slices/getCharactersSlice';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const Filtros = () => {
     const inputValue = useAppSelector(state => state.charactersGallery.searchValue)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     
 
-    const handleChange  = (e)=>{        
+    const handleChange  = (e: { target: { value: string; }; })=>{        
         dispatch(createSearch(e.target.value))
         dispatch(getCharacters(`https://rickandmortyapi.com/api/character/?name=${e.target.value}`))      
     }   

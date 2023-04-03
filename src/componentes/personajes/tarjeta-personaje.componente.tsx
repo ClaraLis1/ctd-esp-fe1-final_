@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch } from '../../redux/hooks';
 import { addFavorites } from '../../slices/getCharactersSlice';
 import { Character, initialType } from '../../types/character.types';
 import BotonFavorito from '../botones/boton-favorito.componente';
@@ -39,6 +39,7 @@ const TarjetaPersonaje = (props : ListadoCharacters) => {
         }        
     }   
 
+       
     
     return(
      <div className="tarjeta-personaje">

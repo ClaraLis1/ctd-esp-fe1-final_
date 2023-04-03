@@ -21,7 +21,6 @@ const PaginaInicio = () => {
 
       
     const handleClick = ()=>{
-        console.log('click');
         dispatch(createSearch(""))        
         dispatch(getCharacters(`https://rickandmortyapi.com/api/character/`))
     }
