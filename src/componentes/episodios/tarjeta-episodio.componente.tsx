@@ -21,6 +21,12 @@ import './tarjeta-episodio.css';
     
 }
 
+/**
+ * este componente recibe un episodio y busca la informacion
+ *
+ * @param {Episode} props
+ * @return {*} 
+ */
 const TarjetaEpisodio = (props: Episode) => {
     const [episodes, setEpisodes] = useState({
         id: 0,

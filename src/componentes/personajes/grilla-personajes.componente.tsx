@@ -13,14 +13,25 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
  * @returns un JSX element 
  */
 
+
+
 interface ListadoCharacters {
     characters: initialType | undefined,
     favorites: Character[],
 }
+
+/**
+ * recibe un listado de personajes y los favoritos y los renderiza
+ *
+ * @param {ListadoCharacters} {characters, favorites}
+ * @return {*} 
+ */
+
 const GrillaPersonajes = ({characters, favorites}:ListadoCharacters) => {    
-    const favoritesToUpdate = useAppSelector(state => state.charactersGallery.favorites) 
+    const favoritesToUpdate = useAppSelector(state => state.charactersInfo.favorites) 
     const newCharacters : Character[] | undefined = characters?.data.results.slice()
-       
+ 
+   
 
     if(newCharacters){
         for (let i = 0; i < favoritesToUpdate.length; i++) {

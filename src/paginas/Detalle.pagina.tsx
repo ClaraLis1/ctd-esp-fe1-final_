@@ -42,7 +42,7 @@ const PaginaDetalle = () => {
         url: "",
         created: "" ,     
         favorite:false, });
-    const favoritesToUpdate = useAppSelector(state => state.charactersGallery.favorites) 
+    const favoritesToUpdate = useAppSelector(state => state.charactersInfo.favorites) 
     const [fav, setFav] = useState(false)
     const dispatch = useAppDispatch()
     const isFavorite = favoritesToUpdate.find(element => element.id === detalle.id)

@@ -4,7 +4,7 @@ import { getCharacters } from '../../slices/getCharactersSlice';
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const Filtros = () => {
-    const inputValue = useAppSelector(state => state.charactersGallery.searchValue)
+    const inputValue = useAppSelector(state => state.charactersInfo.searchValue)
     const dispatch = useAppDispatch()
     
 

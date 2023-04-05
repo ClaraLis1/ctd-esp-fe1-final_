@@ -40,6 +40,7 @@ export interface initialType {
     loading: boolean
     next: string | null
     previous:string | null
-    error:boolean
+    error:string | undefined
     favorites: Character[]
 }   
+

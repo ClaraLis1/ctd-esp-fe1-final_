@@ -5,7 +5,7 @@ import characters from '../slices/getCharactersSlice'
 
 export const store = configureStore({
   reducer: {  
-    charactersGallery : characters    
+    charactersInfo : characters    
   },
 })
 

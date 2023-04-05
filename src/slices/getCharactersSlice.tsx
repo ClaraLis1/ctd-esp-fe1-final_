@@ -1,14 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import {initialType} from "../types/character.types";
+import { initialType} from "../types/character.types";
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+
+
+
 export const getCharacters  = createAsyncThunk(
-    'characters/info',
+    'characters/getInfo',
     async (page: string | null) => {
         if(page !== null){
             const res = await fetch(page)
-            const parseRes = await res.json()
+            const parseRes= await res.json()
             return parseRes
+        }else{
+            throw new Error("Error");
+            
         }
     }
 )
@@ -51,13 +57,13 @@ const initialState: initialType = {
     loading: false,
     next:"",
     previous:"",
-    error:false,
+    error:"",
     favorites:[]
     
 }
 
 const charactersGallery = createSlice({
-    name: 'gallery',
+    name: 'characters',
     initialState,
     reducers: {
         createSearch(state, action : PayloadAction<string>){
@@ -78,21 +84,23 @@ const charactersGallery = createSlice({
             .addCase(getCharacters.pending, (state) => {
                 state.loading = true
             })
-            .addCase(getCharacters.fulfilled, (state, action) => {                  
+            .addCase(getCharacters.fulfilled, (state, action) => {         
                  
                 if(action.payload.error){
-                    state.error = true
+                                    
+                    state.error = action.payload.error
                 }                      
                 else{
                     state.loading = false
                     state.data = action.payload
                     state.next = action.payload.info.next
                     state.previous = action.payload.info.prev
-                    state.error = false
+                    state.error = ""
                 }  
             })
             .addCase(getCharacters.rejected, (state, action) => {
                 state.loading = false
+                state.error = action.error.message
             })
 
     }

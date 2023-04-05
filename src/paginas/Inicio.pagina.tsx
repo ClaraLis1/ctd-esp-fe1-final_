@@ -17,7 +17,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 const PaginaInicio = () => {
        
     const dispatch = useAppDispatch()
-    const characters  = useAppSelector(state => state.charactersGallery)  
+    const characters  = useAppSelector(state => state.charactersInfo)  
 
       
     const handleClick = ()=>{
@@ -37,7 +37,7 @@ const PaginaInicio = () => {
             <button className="danger" onClick={handleClick}>Limpiar Filtros</button>
         </div>
         <Filtros />
-        {characters.error===false&&
+        {characters.error===""&&
         <>
         <Paginacion />
         

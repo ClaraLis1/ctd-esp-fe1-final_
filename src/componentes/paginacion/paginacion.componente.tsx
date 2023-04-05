@@ -2,18 +2,12 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import './paginacion.css';
 import { getCharacters } from '../../slices/getCharactersSlice';
 
-/**
- * Componente que contiene los botones para paginar
- * 
- * Deberás agregar las propiedades necesarias para que funcione correctamente
- * 
- * 
- * @returns un JSX element 
- */
+
+
 const Paginacion = () => {
     const dispatch = useAppDispatch()
-    const nextPage = useAppSelector(state => state.charactersGallery.next)
-    const previousPage = useAppSelector(state => state.charactersGallery.previous) 
+    const nextPage = useAppSelector(state => state.charactersInfo.next)
+    const previousPage = useAppSelector(state => state.charactersInfo.previous) 
   
    
     const handleClickNext = ()=>{

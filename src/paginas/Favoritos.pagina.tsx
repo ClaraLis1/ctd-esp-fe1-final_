@@ -12,7 +12,7 @@ import { resetFavorites } from "../slices/getCharactersSlice";
  */
 const PaginaFavoritos = () => {
     const dispatch = useAppDispatch()
-    const favorites = useAppSelector(state => state.charactersGallery.favorites) 
+    const favorites = useAppSelector(state => state.charactersInfo.favorites) 
 
    
     const handleClick = ()=>{
