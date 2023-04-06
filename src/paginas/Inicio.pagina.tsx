@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
  * ``` <PaginaInicio /> ```
  * 
  * @returns la pagina de inicio
+ * @author Clara Lisle
  */
 const PaginaInicio = () => {
        

@@ -20,14 +20,20 @@ import './tarjeta-episodio.css';
     created: string
     
 }
-
 /**
- * este componente recibe un episodio y busca la informacion
- *
- * @param {Episode} props
- * @return {*} 
+ * este componente recibe un episodio y busca la informacion y la renderiza
+ * @param {object} props
+ * @param {number} props.id
+ * @param {string} props.name
+ * @param {string} props.air_date
+ * @param {string} props.episode
+ * @param {Character[]}
+ * @param {string} props.url
+ * @param {string} props.created
+ * @return {TS.Element} 
  */
-const TarjetaEpisodio = (props: Episode) => {
+
+const TarjetaEpisodio = (props: Episode): any => {
     const [episodes, setEpisodes] = useState({
         id: 0,
         name: "",
@@ -37,6 +43,7 @@ const TarjetaEpisodio = (props: Episode) => {
         url: "",
         created: ""
       })
+
     let episodeNumber = props.episode.slice(40)
 
     useEffect(() => {  
@@ -48,9 +55,7 @@ const TarjetaEpisodio = (props: Episode) => {
             })
             .catch(error => console.error(error));
       
-    },[]) 
-
-  
+    })   
 
     return (
     <div className="tarjeta-episodio">
